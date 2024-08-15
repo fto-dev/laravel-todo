@@ -7,7 +7,7 @@
                 <span class="text-lg font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-[160px]">{{ data.title }}</span>
                 <span class="text-sm font-light text-gray-500">{{ data.created_at_formatted }}</span>
             </label>
-            <button class="ml-5" @click="handleTodoRemove(data.id)" >Remove</button>
+            <button class="ml-5" @click="handleTodoRemove(data.id)">Remove</button>
         </div>
     </li>
 </template>
