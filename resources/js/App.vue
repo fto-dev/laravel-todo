@@ -23,7 +23,7 @@ const state = reactive({
         state.todos = await getTodos();
         state.loading = false;
     } catch (error) {
-        alert(error.message)
+        notify('Something went wrong','warning')
     }
 })()
 
@@ -35,7 +35,6 @@ const handleTodoCreated = (newTodo) => {
 };
 
 const handleTodoRemoved = (id) => {
-    console.log('handleTodoRemoved')
 
     state.todos = state.todos.filter((item) => {
         return item.id != id

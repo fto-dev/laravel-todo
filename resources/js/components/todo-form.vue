@@ -12,6 +12,7 @@
 
 <script setup>
 import { reactive, defineEmits } from 'vue';
+import { notify } from '../util/notify.js';
 
 import { createTodo } from '../util/api.js';
 
@@ -29,7 +30,7 @@ const handleSubmit = async () => {
 
         emit('onTodoCreated', data);
     } catch (error) {
-        alert(error.message)
+        notify('Something went wrong','warning')
     }
 };
 </script>

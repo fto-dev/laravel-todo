@@ -24,7 +24,6 @@ export const updateTodo = async (id, payload) => {
     return response.data;
 }
 
-
 export const removeTodo = async (id) => {
     const response = await httpClient.delete(`/api/todos/${id}`);
     return response.data;

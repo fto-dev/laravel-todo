@@ -14,6 +14,8 @@
 
 <script setup>
     import { defineProps, defineEmits } from 'vue';
+    
+    import { notify } from '../util/notify.js';
     import { updateTodo, removeTodo } from '../util/api.js'
     
     defineProps(['data']);
@@ -29,17 +31,16 @@
             const data = await updateTodo(item.id, payload);
             emit('onTodoUpdated', data);
         } catch(error) {
-            alert(error.message)
+            notify('Something went wrong','warning')
         }
     }
     
     const handleTodoRemove = async (id) => {
-        console.log('level 0 ')
         try {
             const data = await removeTodo(id);
             emit('onTodoRemoved', id);
         } catch(error) {
-            alert(error.message)
+            notify('Something went wrong','warning')
         }
     }
 </script>
