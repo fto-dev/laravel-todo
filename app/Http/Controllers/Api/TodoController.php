@@ -14,7 +14,7 @@ class TodoController extends Controller
     
     public function index()
     {
-        return Todo::all();
+        return Todo::latest()->get();
     }
 
     /**
@@ -23,12 +23,12 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'completed' => 'boolean',
         ]);
 
-        return Todo::create($request->all());
+        return Todo::create($validated);
     }
 
     /**
@@ -46,13 +46,13 @@ class TodoController extends Controller
 
     public function update(Request $request, Todo $todo)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'completed' => 'boolean',
+        $validated = $request->validate([
+            'completed' => 'required|boolean',
         ]);
 
-        $todo->update($request->all());
-        return $todo;
+        $todo->update($validated);
+
+        return $todo->refresh();
     }
 
     /**
