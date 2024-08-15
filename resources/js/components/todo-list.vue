@@ -1,11 +1,8 @@
 <template>
     <div>
-        <ul class="divide-y divide-gray-200 px-4 h-[450px] overflow-x-hidden" v-if="!loading && data.length > 0">
-            <TodoListItem :data="item" :key="item.id" v-for="item in data" @onTodoUpdated="handleTodoUpdated" @onTodoRemoved="handleTodoRemoved"  />
-        </ul>
-
-        <ul class="divide-y divide-gray-200 px-4 overflow-x-hidden" v-if="!loading && data.length == 0">
-            <li class="py-4">
+        <ul class="divide-y divide-gray-200 px-4 h-[450px] overflow-x-hidden" v-if="!loading">
+            <TodoListItem v-if="data.length > 0" :data="item" :key="item.id" v-for="item in data" @onTodoUpdated="handleTodoUpdated" @onTodoRemoved="handleTodoRemoved" />
+            <li class="py-4" v-if="data.length == 0">
                 <div class="flex items-center justify-center" >
                     <span class="text-lg font-medium">There is no any todo.</span>
                 </div>
@@ -47,7 +44,6 @@ const handleTodoUpdated = (newTodo) => {
 const handleTodoRemoved = (id) => {
     emit('onTodoRemoved', id); 
 };
-
 
 defineProps(['data', 'loading','onTodoRemoved']);
 </script>
