@@ -1,9 +1,9 @@
 <template>
     <div>
         <ul class="divide-y divide-gray-200 px-4 h-[450px] overflow-x-hidden" v-if="!loading">
-            <TodoListItem v-if="data.length > 0" :data="item" :key="item.id" v-for="item in data" @onTodoUpdated="handleTodoUpdated" @onTodoRemoved="handleTodoRemoved" />
+            <TodoListItem v-if="data.length > 0" :data="item" :key="item.id" v-for="item in data" @onTodoUpdated="handleTodoUpdated" @onTodoRemoved="handleTodoRemoved"/>
             <li class="py-4" v-if="data.length == 0">
-                <div class="flex items-center justify-center" >
+                <div class="flex items-center justify-center">
                     <span class="text-lg font-medium">There is no any todo.</span>
                 </div>
             </li>
